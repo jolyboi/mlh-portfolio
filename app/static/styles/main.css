@@ -44,9 +44,20 @@ body {
 .nav-content nav {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: center;
     padding-top: 0px;
-    padding-right: 0px;
+    padding-bottom: 10px;
+}
+
+.nav-content nav .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 0px 15px;
+}
+
+.nav-content nav .nav-link:hover {
+    text-decoration: underline;
 }
 
 .profile {
