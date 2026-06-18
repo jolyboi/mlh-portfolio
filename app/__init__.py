@@ -5,7 +5,11 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
+# Pages shown in the nav bar
+PAGES = [
+    {"name": "Home", "url": "/"}
+]
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"))
+    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), pages=PAGES)
