@@ -7,9 +7,14 @@ app = Flask(__name__)
 
 # Pages shown in the nav bar
 PAGES = [
-    {"name": "Home", "url": "/"}
+    {"name": "Home", "url": "/"},
+    {"name": "Hobbies", "url": "/hobbies"}
 ]
 
 @app.route('/')
 def index():
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), pages=PAGES)
+
+@app.route('/hobbies')
+def hobbies():
+    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"))
