@@ -32,45 +32,41 @@ For each of these tasks, you should create an [Issue](https://docs.github.com/en
 
 ## Getting Started
 
-You need to do all your progress here.
+This project uses [uv](https://github.com/astral-sh/uv) for dependency management.
 
 ## Installation
 
-Make sure you have python3 and pip installed
-
-Create and activate virtual environment using virtualenv
+Install uv if you don't have it:
 ```bash
-$ python -m venv python3-virtualenv
-$ source python3-virtualenv/bin/activate
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies!
-
+Install dependencies:
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ## Usage
 
-Create a .env file using the example.env template (make a copy using the variables inside of the template)
-
-Start flask development server
+Copy the example env file and fill in your values:
 ```bash
-$ export FLASK_ENV=development
-$ flask run
+cp example.env .env
 ```
 
-You should get a response like this in the terminal:
-```
-❯ flask run
- * Environment: development
- * Debug mode: on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+Run the development server:
+```bash
+uv run flask run
 ```
 
-You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser! 
+You'll now be able to access the website at `localhost:5000` or `127.0.0.1:5000` in the browser!
 
-*Note: The portfolio site will only work on your local machine while you have it running inside of your terminal. We'll go through how to host it in the cloud in the next few weeks!* 
+*Note: The portfolio site will only work on your local machine while you have it running inside of your terminal. We'll go through how to host it in the cloud in the next few weeks!*
+
+## Adding dependencies
+
+```bash
+uv add <package-name>
+```
 
 ## Contributing
 
