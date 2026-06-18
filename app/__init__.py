@@ -12,36 +12,44 @@ PAGES = [
 
 # Placeholders
 WORK_EXP = [
-      {
+    {
         "name": "Andrei",
-        "title": "Insert Info",
-        "dates": "Insert Info",
-        "description": "Placeholder",
+        "entries": [
+            {"title": "Insert Info", "dates": "Insert Info", "description": "Placeholder"},
+        ],
     },
     {
         "name": "Ghadi",
-        "title": "Insert Info",
-        "dates": "Insert Info",
-        "description": "Placeholder",
+        "entries": [
+            {"title": "Insert Info", "dates": "Insert Info", "description": "Placeholder"},
+        ],
     },
 ]
 
 EDUCATION = [
-     {
+    {
         "name": "Andrei",
-        "title": "BSc Computer Science",
-        "subtitle": "University College Cork",
-        "dates": "2024 – 2028",
-        "description": "Placeholder",
+        "entries": [
+            {
+                "title": "BSc Computer Science",
+                "subtitle": "University College Cork",
+                "dates": "2024 – 2028",
+                "description": "Placeholder",
+            },
+        ],
     },
-      {
+    {
         "name": "Ghadi",
-        "title": "Insert Info",
-        "subtitle": "Insert Info",
-        "dates": "Insert Info",
-        "description": "Placeholder",
+        "entries": [
+            {
+                "title": "Insert Info",
+                "subtitle": "Insert Info",
+                "dates": "Insert Info",
+                "description": "Placeholder",
+            },
+        ],
     },
-] 
+]
 
 @app.route('/')
 def index():
