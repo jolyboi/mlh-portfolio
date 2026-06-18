@@ -27,6 +27,11 @@
                     <img src="{{ url_for('static', filename='img/logo.svg') }}" />
                 </div>
             </a>
+            <nav>
+                {% for page in pages %}
+                <a class="nav-link" href="{{ page.url }}">{{ page.name }}</a>
+                {% endfor %}
+            </nav>
         </div>
     </header>
 
