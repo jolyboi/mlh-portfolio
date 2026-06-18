@@ -10,6 +10,46 @@ PAGES = [
     {"name": "Home", "url": "/"}
 ]
 
+# Placeholders
+WORK_EXP = [
+      {
+        "name": "Andrei",
+        "title": "Insert Info",
+        "dates": "Insert Info",
+        "description": "Placeholder",
+    },
+    {
+        "name": "Ghadi",
+        "title": "Insert Info",
+        "dates": "Insert Info",
+        "description": "Placeholder",
+    },
+]
+
+EDUCATION = [
+     {
+        "name": "Andrei",
+        "title": "BSc Computer Science",
+        "subtitle": "University College Cork",
+        "dates": "2024 – 2028",
+        "description": "Placeholder",
+    },
+      {
+        "name": "Ghadi",
+        "title": "Insert Info",
+        "subtitle": "Insert Info",
+        "dates": "Insert Info",
+        "description": "Placeholder",
+    },
+] 
+
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), pages=PAGES)
+    return render_template(
+        'index.html', 
+        title="MLH Fellow", 
+        url=os.getenv("URL"), 
+        pages=PAGES,
+        work_experiences=WORK_EXP,
+        education=EDUCATION,
+    )
