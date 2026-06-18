@@ -21,7 +21,7 @@ WORK_EXP = [
     {
         "name": "Ghadi",
         "entries": [
-            {"title": "Insert Info", "dates": "Insert Info", "description": "Placeholder"},
+            {"title": "Genvia", "dates": "Oct 2025 - Aug 2026", "description": "DevOps Apprentice"},
         ],
     },
 ]
@@ -42,10 +42,10 @@ EDUCATION = [
         "name": "Ghadi",
         "entries": [
             {
-                "title": "Insert Info",
-                "subtitle": "Insert Info",
-                "dates": "Insert Info",
-                "description": "Placeholder",
+                "title": "M.Eng Devops Engineering",
+                "subtitle": "Polytech Montpellier",
+                "dates": "2025-2028",
+                "description": "A CS degree centered around DevOps technologies and methodoligies",
             },
         ],
     },
