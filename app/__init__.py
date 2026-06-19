@@ -16,7 +16,7 @@ WORK_EXP = [
     {
         "name": "Andrei",
         "entries": [
-            {"title": "Insert Info", "dates": "Insert Info", "description": "Placeholder"},
+            {"title": "Claude Soc's Tutor", "dates": "Apr 2026 - Present", "description": "Do workshops and organize events"},
         ],
     },
     {
@@ -34,8 +34,8 @@ EDUCATION = [
             {
                 "title": "BSc Computer Science",
                 "subtitle": "University College Cork",
-                "dates": "2024 – 2028",
-                "description": "Placeholder",
+                "dates": "2024-2028",
+                "description": "Currently going into the 3rd year.",
             },
         ],
     },
