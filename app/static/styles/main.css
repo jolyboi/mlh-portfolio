@@ -196,3 +196,38 @@ body {
     font-size: 14px;
     margin: 4px 0px 12px 0px;
 }
+
+#travel-map {
+    height: 420px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 600px) {
+    #travel-map {
+        height: 300px;
+    }
+}
