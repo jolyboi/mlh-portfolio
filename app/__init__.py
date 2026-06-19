@@ -54,20 +54,39 @@ EDUCATION = [
 
 HOBBIES = ["Hobby 1", "Hobby 2", "Hobby 3"]
 
+TRAVEL = [
+    {
+        "name": "Ghadi",
+        "color": "#1C539F",
+        "countries": [
+            {"name": "Lebanon", "lat": 33.8547, "lng": 35.8623},
+            {"name": "France", "lat": 46.2276, "lng": 2.2137},
+            {"name": "Spain", "lat": 40.4637, "lng": -3.7492},
+            {"name": "Turkey", "lat": 38.9637, "lng": 35.2433},
+            {"name": "Switzerland", "lat": 46.8182, "lng": 8.2275},
+        ],
+    },
+    {
+        "name": "Andrei",
+        "color": "#e74c3c",
+        "countries": [],
+    },
+]
+
 
 @app.route('/')
 def index():
     return render_template(
-        'index.html', 
-        title="MLH Fellow", 
-        url=os.getenv("URL"), 
+        'index.html',
+        title="MLH Fellow",
+        url=os.getenv("URL"),
         pages=PAGES,
         work_experiences=WORK_EXP,
         education=EDUCATION,
     )
-  
-  
+
+
 @app.route('/hobbies')
 def hobbies():
-    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), pages=PAGES, hobbies=HOBBIES)
+    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), pages=PAGES, hobbies=HOBBIES, travel=TRAVEL)
 
