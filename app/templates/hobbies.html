@@ -1,4 +1,9 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+
 {% block content %}
 <div class="profile">
     <h1>{{ title }}</h1>
@@ -17,4 +22,40 @@
         </div>
     </div>
 </div>
+
+<section class="section">
+    <h2>Places We've Visited</h2>
+    <div class="map-legend">
+        {% for person in travel %}
+        <span class="legend-item">
+            <span class="legend-dot" style="background-color: {{ person.color }}"></span>
+            {{ person.name }}
+        </span>
+        {% endfor %}
+    </div>
+    <div id="travel-map"></div>
+</section>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const map = L.map('travel-map').setView([30, 20], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 18
+    }).addTo(map);
+
+    const travelData = {{ travel | tojson }};
+    travelData.forEach(function(person) {
+        person.countries.forEach(function(country) {
+            L.circleMarker([country.lat, country.lng], {
+                radius: 10,
+                fillColor: person.color,
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.9
+            }).addTo(map).bindPopup('<b>' + country.name + '</b><br>' + person.name);
+        });
+    });
+</script>
 {% endblock %}
