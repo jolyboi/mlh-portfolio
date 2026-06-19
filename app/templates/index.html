@@ -6,12 +6,42 @@
     </div>
     <h1>{{ title }}</h1>
 </div>
-<div class="hobbies">
-    <h2>Hobbies</h2>
-    <ul>
-        {% for hobby in hobbies %}
-        <li>{{ hobby }}</li>
+
+<section class="section">
+    <h2>Work Experience</h2>
+    <div class="columns">
+        {% for column in work_experiences %}
+        <div class="column">
+            <h3 class="column-name">{{ column.name }}</h3>
+            {% for entry in column.entries %}
+            <div class="entry-card">
+                <h4 class="entry-title">{{ entry.title }}</h4>
+                {% if entry.subtitle %}<p class="entry-subtitle">{{ entry.subtitle }}</p>{% endif %}
+                <p class="entry-dates">{{ entry.dates }}</p>
+                <p>{{ entry.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
         {% endfor %}
-    </ul>
-</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Education</h2>
+    <div class="columns">
+        {% for column in education %}
+        <div class="column">
+            <h3 class="column-name">{{ column.name }}</h3>
+            {% for entry in column.entries %}
+            <div class="entry-card">
+                <h4 class="entry-title">{{ entry.title }}</h4>
+                {% if entry.subtitle %}<p class="entry-subtitle">{{ entry.subtitle }}</p>{% endif %}
+                <p class="entry-dates">{{ entry.dates }}</p>
+                <p>{{ entry.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

@@ -11,12 +11,63 @@ PAGES = [
     {"name": "Hobbies", "url": "/hobbies"}
 ]
 
+# Placeholders
+WORK_EXP = [
+    {
+        "name": "Andrei",
+        "entries": [
+            {"title": "Insert Info", "dates": "Insert Info", "description": "Placeholder"},
+        ],
+    },
+    {
+        "name": "Ghadi",
+        "entries": [
+            {"title": "Genvia", "dates": "Oct 2025 - Aug 2026", "description": "DevOps Apprentice"},
+        ],
+    },
+]
+
+EDUCATION = [
+    {
+        "name": "Andrei",
+        "entries": [
+            {
+                "title": "BSc Computer Science",
+                "subtitle": "University College Cork",
+                "dates": "2024 – 2028",
+                "description": "Placeholder",
+            },
+        ],
+    },
+    {
+        "name": "Ghadi",
+        "entries": [
+            {
+                "title": "M.Eng Devops Engineering",
+                "subtitle": "Polytech Montpellier",
+                "dates": "2025-2028",
+                "description": "A CS degree centered around DevOps technologies and methodoligies",
+            },
+        ],
+    },
+]
+
 HOBBIES = ["Hobby 1", "Hobby 2", "Hobby 3"]
+
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), pages=PAGES)
-
+    return render_template(
+        'index.html', 
+        title="MLH Fellow", 
+        url=os.getenv("URL"), 
+        pages=PAGES,
+        work_experiences=WORK_EXP,
+        education=EDUCATION,
+    )
+  
+  
 @app.route('/hobbies')
 def hobbies():
     return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), hobbies=HOBBIES)
+
