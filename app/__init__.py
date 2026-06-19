@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 # Pages shown in the nav bar
 PAGES = [
-    {"name": "Home", "url": "/"}
+    {"name": "Home", "url": "/"},
+    {"name": "Hobbies", "url": "/hobbies"}
 ]
 
 # Placeholders
@@ -51,6 +52,9 @@ EDUCATION = [
     },
 ]
 
+HOBBIES = ["Hobby 1", "Hobby 2", "Hobby 3"]
+
+
 @app.route('/')
 def index():
     return render_template(
@@ -61,3 +65,9 @@ def index():
         work_experiences=WORK_EXP,
         education=EDUCATION,
     )
+  
+  
+@app.route('/hobbies')
+def hobbies():
+    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), hobbies=HOBBIES)
+
