@@ -8,18 +8,12 @@
 <div class="profile">
     <h1>{{ title }}</h1>
     <div class="hobbies-grid">
+        {% for hobby in hobbies %}
         <div class="hobby-card">
             <div class="hobby-img-placeholder"></div>
-            <p>Hobby one</p>
+            <p>{{ hobby }}</p>
         </div>
-        <div class="hobby-card">
-            <div class="hobby-img-placeholder"></div>
-            <p>Hobby two</p>
-        </div>
-        <div class="hobby-card">
-            <div class="hobby-img-placeholder"></div>
-            <p>Hobby three</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -59,3 +53,5 @@
     });
 </script>
 {% endblock %}
+
+

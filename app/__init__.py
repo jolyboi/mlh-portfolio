@@ -88,5 +88,5 @@ def index():
 
 @app.route('/hobbies')
 def hobbies():
-    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), hobbies=HOBBIES, travel=TRAVEL)
+    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), pages=PAGES, hobbies=HOBBIES, travel=TRAVEL)
 
