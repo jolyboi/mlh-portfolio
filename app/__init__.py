@@ -69,7 +69,13 @@ TRAVEL = [
     {
         "name": "Andrei",
         "color": "#e74c3c",
-        "countries": [],
+        "countries": [
+            {"name": "Ireland", "lat": 53.1424, "lng": -7.6921},
+            {"name": "UK", "lat": 55.3781, "lng": -3.4360},
+            {"name": "Singapore", "lat": 1.3521, "lng": 103.8198},
+            {"name": "Egypt", "lat": 26.8206, "lng": 30.8025},
+            {"name": "Serbia", "lat": 44.0165, "lng": 21.0059},
+        ],
     },
 ]
 
