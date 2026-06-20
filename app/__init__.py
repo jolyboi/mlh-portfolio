@@ -6,23 +6,28 @@ load_dotenv()
 app = Flask(__name__)
 
 # Pages shown in the nav bar
-PAGES = [
-    {"name": "Home", "url": "/"},
-    {"name": "Hobbies", "url": "/hobbies"}
-]
+PAGES = [{"name": "Home", "url": "/"}, {"name": "Hobbies", "url": "/hobbies"}]
 
 # Placeholders
 WORK_EXP = [
     {
         "name": "Andrei",
         "entries": [
-            {"title": "Claude Soc's Tutor", "dates": "Apr 2026 - Present", "description": "Do workshops and organize events"},
+            {
+                "title": "Claude Soc's Tutor",
+                "dates": "Apr 2026 - Present",
+                "description": "Do workshops and organize events",
+            },
         ],
     },
     {
         "name": "Ghadi",
         "entries": [
-            {"title": "Genvia", "dates": "Oct 2025 - Aug 2026", "description": "DevOps Apprentice"},
+            {
+                "title": "Genvia",
+                "dates": "Oct 2025 - Aug 2026",
+                "description": "DevOps Apprentice",
+            },
         ],
     },
 ]
@@ -52,7 +57,50 @@ EDUCATION = [
     },
 ]
 
-HOBBIES = ["Hobby 1", "Hobby 2", "Hobby 3"]
+HOBBIES = [
+    {
+        "name": "Ghadi",
+        "color": "#1C539F",
+        "entries": [
+            {
+                "title": "Gym",
+                "description": "I enjoy strength training and pushing my limits at the gym to stay strong and focused.",
+                "images": ["img/hobbies/ghadi-gym.jpg"],
+            },
+            {
+                "title": "Cooking",
+                "description": "Experimenting in the kitchen with new recipes is one of my favorite creative outlets.",
+                "images": ["img/hobbies/ghadi-cooking.jpg"],
+            },
+            {
+                "title": "Meeting new people",
+                "description": "I love making new connections, hearing different perspectives, and building friendships along the way.",
+                "images": ["img/hobbies/ghadi-meeting.jpg"],
+            },
+        ],
+    },
+    {
+        "name": "Andrei",
+        "color": "#e74c3c",
+        "entries": [
+            {
+                "title": "Reading",
+                "description": "Whether it's sci-fi or a tech deep-dive, I always have a book within arm's reach.",
+                "images": ["img/hobbies/andrei-reading.jpg"],
+            },
+            {
+                "title": "Hiking",
+                "description": "Getting out on the trails and into nature is my favorite way to reset on weekends.",
+                "images": ["img/hobbies/andrei-hiking.jpg"],
+            },
+            {
+                "title": "Music",
+                "description": "I enjoy discovering new artists and curating playlists for every mood.",
+                "images": ["img/hobbies/andrei-music.jpg"],
+            },
+        ],
+    },
+]
 
 TRAVEL = [
     {
@@ -80,10 +128,10 @@ TRAVEL = [
 ]
 
 
-@app.route('/')
+@app.route("/")
 def index():
     return render_template(
-        'index.html',
+        "index.html",
         title="MLH Fellows",
         url=os.getenv("URL"),
         pages=PAGES,
@@ -92,7 +140,13 @@ def index():
     )
 
 
-@app.route('/hobbies')
+@app.route("/hobbies")
 def hobbies():
-    return render_template('hobbies.html', title="Hobbies", url=os.getenv("URL"), pages=PAGES, hobbies=HOBBIES, travel=TRAVEL)
-
+    return render_template(
+        "hobbies.html",
+        title="Hobbies",
+        url=os.getenv("URL"),
+        pages=PAGES,
+        hobbies=HOBBIES,
+        travel=TRAVEL,
+    )
