@@ -84,7 +84,7 @@ TRAVEL = [
 def index():
     return render_template(
         'index.html',
-        title="MLH Fellow",
+        title="MLH Fellows",
         url=os.getenv("URL"),
         pages=PAGES,
         work_experiences=WORK_EXP,
