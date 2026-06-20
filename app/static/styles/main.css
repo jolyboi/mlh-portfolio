@@ -78,6 +78,7 @@ body {
         height: 180px;
         border-radius: 50%;
         object-fit: cover;
+        object-position: center 20%;
         display: block;
         border: 4px solid white;
 }
