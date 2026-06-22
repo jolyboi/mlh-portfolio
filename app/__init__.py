@@ -9,6 +9,17 @@ app = Flask(__name__)
 PAGES = [{"name": "Home", "url": "/"}, {"name": "Hobbies", "url": "/hobbies"}]
 
 # Placeholders
+ABOUT = [
+    {
+        "name": "Andrei",
+        "description": "Computer Science student at University College Cork, heading into my third year. I enjoy building things, contributing to my college's Claude Society, and exploring new places.",
+    },
+    {
+        "name": "Ghadi",
+        "description": "DevOps Engineering student at Polytech Montpellier and a DevOps apprentice at Genvia. I'm passionate about automation, cloud technologies, and cooking in my spare time.",
+    },
+]
+
 WORK_EXP = [
     {
         "name": "Andrei",
@@ -135,6 +146,7 @@ def index():
         title="MLH Fellows",
         url=os.getenv("URL"),
         pages=PAGES,
+        about=ABOUT,
         work_experiences=WORK_EXP,
         education=EDUCATION,
     )
