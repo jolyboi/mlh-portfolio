@@ -12,10 +12,13 @@ echo "Creating a post.."
 ID=$(curl -s -X POST "$URL" -d "name=$NAME" -d "email=$EMAIL" -d "content=$CONTENT" | jq '.id')
 echo "Created post with id $ID"
 
-# Check the post shows up 
+# Check the post shows up
 echo "Checking the post was added.."
-curl -s "$URL" | grep -q "$CONTENT"
-echo "Post was added"
+if curl -s "$URL" | grep -q "$CONTENT"; then
+    echo "Post was added"
+else
+    echo "Post was NOT added"
+fi
 
 # Delete the post
 echo "Deleting the post.."
