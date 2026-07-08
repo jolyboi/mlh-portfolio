@@ -41,7 +41,8 @@ mydb.create_tables([TimelinePost])
 # Pages shown in the nav bar
 PAGES = [
     {"name": "Home", "url": "/"},
-    {"name": "Hobbies", "url": "/hobbies"}
+    {"name": "Hobbies", "url": "/hobbies"},
+    {"name": "Timeline", "url": "/timeline"}
 ]
 
 # Placeholders
@@ -171,3 +172,8 @@ def delete_time_line_post(post_id):
         return {'error': f'No timeline post with id {post_id}'}, 404
 
     return {'deleted': post_id}
+
+
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title='Timeline', url=os.getenv("URL"), pages=PAGES)

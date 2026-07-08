@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile">
+    <h1>{{ title }}</h1>
+</div>
+
+<section class="section">
+    <h2>Add a Post</h2>
+    <form id="timeline-form" class="timeline-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Message</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+        </div>
+        <button type="submit">Post</button>
+    </form>
+</section>
+
+<section class="section">
+    <h2>Timeline</h2>
+    <div id="timeline-posts"></div>
+</section>
+
+<script>
+    const form = document.getElementById('timeline-form');
+    const postsContainer = document.getElementById('timeline-posts');
+
+    // Fetch all posts from the GET endpoint and render them
+    async function loadPosts() {
+        const response = await fetch('/api/timeline_post');
+        const data = await response.json();
+
+        postsContainer.innerHTML = '';
+        data.timeline_posts.forEach(function (post) {
+            const card = document.createElement('div');
+            card.className = 'entry-card';
+            card.innerHTML =
+                '<h4 class="entry-title">' + post.name + '</h4>' +
+                '<p class="entry-subtitle">' + post.email + '</p>' +
+                '<p class="entry-dates">' + post.created_at + '</p>' +
+                '<p></p>';
+            // Use textContent for the message so user input can't inject HTML
+            card.querySelector('p:last-child').textContent = post.content;
+            postsContainer.appendChild(card);
+        });
+    }
+
+    // Send the form to the POST endpoint, then refresh the list.
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        await fetch('/api/timeline_post', {
+            method: 'POST',
+            body: new FormData(form)
+        });
+        form.reset();
+        loadPosts();
+    });
+
+    loadPosts();
+</script>
+{% endblock %}
