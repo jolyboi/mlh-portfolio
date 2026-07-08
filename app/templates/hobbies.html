@@ -7,15 +7,26 @@
 {% block content %}
 <div class="profile">
     <h1>{{ title }}</h1>
-    <div class="hobbies-grid">
-        {% for hobby in hobbies %}
-        <div class="hobby-card">
-            <div class="hobby-img-placeholder"></div>
-            <p>{{ hobby }}</p>
+</div>
+
+<section class="section">
+    <div class="columns">
+        {% for column in hobbies %}
+        <div class="column">
+            <h3 class="column-name" style="color: {{ column.color }}">{{ column.name }}</h3>
+            {% for entry in column.entries %}
+            <article class="entry-card hobby-card">
+                {% for image in entry.images %}
+                <img src="{{ url_for('static', filename=image) }}" alt="{{ entry.title }}" loading="lazy">
+                {% endfor %}
+                <h4 class="entry-title">{{ entry.title }}</h4>
+                <p>{{ entry.description }}</p>
+            </article>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>
-</div>
+</section>
 
 <section class="section">
     <h2>Places We've Visited</h2>
