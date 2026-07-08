@@ -33,6 +33,18 @@
     const form = document.getElementById('timeline-form');
     const postsContainer = document.getElementById('timeline-posts');
 
+    // Build a Gravatar URL from an email: hash the normalized email and
+    // let Gravatar serve that person's avatar (or an identicon fallback)
+    async function gravatarUrl(email, size) {
+        const normalized = email.trim().toLowerCase();
+        const bytes = new TextEncoder().encode(normalized);
+        const digest = await crypto.subtle.digest('SHA-256', bytes);
+        const hash = Array.from(new Uint8Array(digest))
+            .map(function (b) { return b.toString(16).padStart(2, '0'); })
+            .join('');
+        return 'https://www.gravatar.com/avatar/' + hash + '?s=' + size + '&d=identicon';
+    }
+
     // Fetch all posts from the GET endpoint and render them
     async function loadPosts() {
         const response = await fetch('/api/timeline_post');
@@ -43,12 +55,17 @@
             const card = document.createElement('div');
             card.className = 'entry-card';
             card.innerHTML =
+                '<img class="entry-avatar" width="80" height="80" alt="">' +
                 '<h4 class="entry-title">' + post.name + '</h4>' +
                 '<p class="entry-subtitle">' + post.email + '</p>' +
                 '<p class="entry-dates">' + post.created_at + '</p>' +
                 '<p></p>';
             // Use textContent for the message so user input can't inject HTML
             card.querySelector('p:last-child').textContent = post.content;
+            // Fill in the avatar once its hash has been computed
+            gravatarUrl(post.email, 80).then(function (url) {
+                card.querySelector('.entry-avatar').src = url;
+            });
             postsContainer.appendChild(card);
         });
     }
