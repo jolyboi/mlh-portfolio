@@ -1,9 +1,8 @@
-#!/bin/bash 
+#!/bin/bash
+set -e  # stop the script if any command fails
 
 PROJECT_PATH="$HOME/mlh-portfolio"
-
-echo "Killing all existing sessions.."
-tmux kill-server 2>/dev/null || true # ignore errors if no tmux sessions running
+SERVICE_NAME="myportfolio"
 
 cd "$PROJECT_PATH"
 
@@ -11,10 +10,11 @@ echo "Pulling latest changes from origin/main.."
 git fetch && git reset origin/main --hard
 
 echo "Syncing python dependencies with uv.."
-uv sync 
+uv sync
 
-echo "Starting a new detached tmux session with a flask server.."
-tmux new-session -d -s myserver "cd $PROJECT_PATH  && uv run flask run --host=0.0.0.0 --port=5000"
+echo "Restarting the $SERVICE_NAME service.."
+sudo systemctl restart "$SERVICE_NAME"
 
 echo "Done!"
-echo "	Attach with: tmux attach -t myserver"
+echo "  Status:  systemctl status $SERVICE_NAME"
+echo "  Logs:    journalctl -u $SERVICE_NAME -f"
